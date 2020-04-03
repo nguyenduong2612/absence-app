@@ -1,0 +1,24 @@
+.form{
+    width:500px;
+    height: 280px;
+}
+
+.input-row{
+    width: 400px;
+    margin: 10px;
+}
+
+.input-small-row{
+    width: 150px;
+    margin: 10px;
+}
+
+.center-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit-button{
+    width: 100px;
+    margin: 10px;
+}
