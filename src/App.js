@@ -11,12 +11,18 @@ class App extends Component {
     this.state = {
       showModal: false,
       absences: [],
+      filteredAbsences: [],
     };
 
     this.handleClose = this.handleClose.bind(this)
     this.handleShow = this.handleShow.bind(this)
+    this.getSearch = this.getSearch.bind(this)
   }
-
+  getSearch =  async(filteredList)=>{
+    await this.setState({filteredAbsences:filteredList});
+    console.log(this.state.filteredAbsences);  // Show filtered list of absences
+  }
+  
   handleClose = () => {
     this.setState({ showModal: false })
   }
@@ -30,8 +36,14 @@ class App extends Component {
     this.setState({showModal: false});
     console.log(this.state.absences)
   }
-
+  
   render() {
+    let list;
+    if(this.state.filteredAbsences.length===0){
+        list = <AbsenceList absences = {this.state.absences}/>
+    }else{
+        list = <AbsenceList absences = {this.state.filteredAbsences}/>
+    }
     return (
       <div className="App">
         <nav className="navbar navbar-light bg-light">
@@ -43,7 +55,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-6 px-0">
-              <Search />
+            <Search getSearch = {this.getSearch} absences={this.state.absences}/>
             </div>
 
             <div className="col-md-6 px-0">
@@ -59,11 +71,9 @@ class App extends Component {
               {/*<button onClick={this.show}>Show "absences" after submitting a form by Form.js</button>*/}
             </div>
           </div>
-          
+            
           <div className="row pt-5">
-            <AbsenceList 
-              absences = {this.state.absences}
-            />
+            {list}
           </div>
         </div>
       </div>
