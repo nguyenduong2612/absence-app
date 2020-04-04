@@ -15,16 +15,11 @@ class App extends Component {
 
     this.handleClose = this.handleClose.bind(this)
     this.handleShow = this.handleShow.bind(this)
-    // this.show = this.show(this); //Show "absences" after submitting a form by Form.js(just 4 debug)
   }
 
   handleClose = () => {
     this.setState({ showModal: false })
   }
-
-  // show(event){
-  //     console.log(this.state.absences)
-  // } //Show "absences" after submitting a form by Form.js(just 4 debug)
 
   handleShow = () => {
     this.setState({ showModal: true })
@@ -32,14 +27,16 @@ class App extends Component {
 
   handleUpdate = (newValue) =>{
     this.setState({absences : newValue});
+    this.setState({showModal: false});
+    console.log(this.state.absences)
   }
 
   render() {
     return (
       <div className="App">
-        <nav class="navbar navbar-light bg-light">
+        <nav className="navbar navbar-light bg-light">
           <div className="container">
-            <a class="navbar-brand">欠席管理</a>
+            <a className="navbar-brand">欠席管理</a>
           </div>
         </nav>
 

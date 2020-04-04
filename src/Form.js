@@ -44,29 +44,43 @@ class Form extends Component {
             end: this.state.end,
         });
         this.props.handleUpdate(absence_list);
-        event.target.style.display = "none";
     }
     render() {
         return (
-            <form class='form' onSubmit={this.handleSubmit}>
-                <h3 class='card-header bg-primary text-white'>欠席のフォーム</h3>
-                <table>
-                    <tr >
-                        <input class='input-row' placeholder="名前" onChange={this.handleNameChange}/>
-                    </tr>
-                    <tr>
-                        <input class='input-row' placeholder="欠席の理由" onChange={this.handleReasonChange}/>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class='input-small-row' placeholder="開始日" onChange={this.handleStartChange}/>
-
-                            <input class='input-small-row' placeholder="終了日" onChange={this.handleEndChange}/>
-                        </td>
-                    </tr>
-                </table>
-                <div class='center-button'>
-                    <button className="btn btn-primary submit-button" value="submit">提出</button>
+            <form className='form' onSubmit={this.handleSubmit}>
+                <h3 className='card-header bg-primary text-white mb-4'>欠席のフォーム</h3>
+                <div className="row px-3">
+                    <input 
+                        className='form-control'
+                        placeholder="名前" 
+                        onChange={this.handleNameChange}
+                    />
+                </div>
+                <div className="row px-3">
+                    <input 
+                        className='form-control'
+                        placeholder="欠席の理由" 
+                        onChange={this.handleReasonChange}
+                    />
+                </div>
+                <div className="row"> 
+                    <div className="col-md-6">
+                        <input 
+                            className='form-control' 
+                            placeholder="開始日" 
+                            onChange={this.handleStartChange}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <input 
+                            className='form-control' 
+                            placeholder="終了日" 
+                            onChange={this.handleEndChange}
+                        />
+                    </div>
+                </div>
+                <div className='center-button'>
+                    <button className="btn btn-primary submit-button mb-4" value="submit">提出</button>
                 </div>
             </form>
         );
