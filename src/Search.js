@@ -13,7 +13,7 @@ class Search extends Component {
     const filteredList = absencesList.filter(absence => {
         return absence.name.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1
     })
-    this.props.getSearch(filteredList);
+    this.props.getSearch(filteredList,this.state.search);
     // console.log(this.props.absences);
   }
   render() {

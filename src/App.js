@@ -12,14 +12,16 @@ class App extends Component {
       showModal: false,
       absences: [],
       filteredAbsences: [],
+      search:'',
     };
 
     this.handleClose = this.handleClose.bind(this)
     this.handleShow = this.handleShow.bind(this)
     this.getSearch = this.getSearch.bind(this)
   }
-  getSearch =  async(filteredList)=>{
-    await this.setState({filteredAbsences:filteredList});
+  getSearch =  async(filteredList,search)=>{
+    await this.setState({filteredAbsences:filteredList,search:search});
+    console.log(this.state.search);
     console.log(this.state.filteredAbsences);  // Show filtered list of absences
   }
   
@@ -39,7 +41,7 @@ class App extends Component {
   
   render() {
     let list;
-    if(this.state.filteredAbsences.length===0){
+    if(this.state.search===''){
         list = <AbsenceList absences = {this.state.absences}/>
     }else{
         list = <AbsenceList absences = {this.state.filteredAbsences}/>
