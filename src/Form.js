@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 import "./Form.css";
 
 class Form extends Component {
@@ -7,8 +10,8 @@ class Form extends Component {
         this.state = {
           name: "",
           reason: "",
-          start: "",
-          end: "",
+          start: new Date(),
+          end:  new Date()
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleReasonChange = this.handleReasonChange.bind(this);
@@ -26,12 +29,12 @@ class Form extends Component {
       this.setState({reason : event.target.value})
     }
 
-    handleStartChange(event){
-        this.setState({start : event.target.value});
+    handleStartChange(date){
+        this.setState({start : date});
     }
 
-    handleEndChange(event){
-        this.setState({end : event.target.value});
+    handleEndChange(date){
+        this.setState({end : date});
     }
 
     handleSubmit(event){
@@ -40,8 +43,8 @@ class Form extends Component {
         absence_list.push({
             name: this.state.name,
             reason: this.state.reason,
-            start : this.state.start,
-            end: this.state.end,
+            start : this.state.start.toLocaleDateString('ja-JP'),
+            end: this.state.end.toLocaleDateString('ja-JP'),
         });
         this.props.handleUpdate(absence_list);
     }
@@ -57,7 +60,7 @@ class Form extends Component {
                     />
                 </div>
                 <div className="row px-3">
-                    <input 
+                    <textarea 
                         className='form-control'
                         placeholder="欠席の理由" 
                         onChange={this.handleReasonChange}
@@ -65,17 +68,21 @@ class Form extends Component {
                 </div>
                 <div className="row"> 
                     <div className="col-md-6">
-                        <input 
-                            className='form-control' 
-                            placeholder="開始日" 
+                        <p className="mb-1">開始日</p>
+                        <DatePicker
+                            className='form-control'
+                            selected={ this.state.start }
                             onChange={this.handleStartChange}
+                            dateFormat='yyyy年MM月dd日'
                         />
                     </div>
                     <div className="col-md-6">
-                        <input 
-                            className='form-control' 
-                            placeholder="終了日" 
+                        <p className="mb-1">終了日</p>
+                        <DatePicker 
+                            className='form-control'
+                            selected={ this.state.end }
                             onChange={this.handleEndChange}
+                            dateFormat='yyyy年MM月dd日'
                         />
                     </div>
                 </div>
