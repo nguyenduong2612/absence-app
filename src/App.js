@@ -10,32 +10,28 @@ class App extends Component {
     super();
     this.state = {
       showModal: false,
-      absences: [
-        {
-          name: "",
-          reason: "",
-          start: "",
-          end: ""
-        },
-        {
-          name: "",
-          reason: "",
-          start: "",
-          end: ""
-        },
-      ]
+      absences: [],
     };
 
     this.handleClose = this.handleClose.bind(this)
     this.handleShow = this.handleShow.bind(this)
+    // this.show = this.show(this); //Show "absences" after submitting a form by Form.js(just 4 debug)
   }
 
   handleClose = () => {
     this.setState({ showModal: false })
   }
 
+  // show(event){
+  //     console.log(this.state.absences)
+  // } //Show "absences" after submitting a form by Form.js(just 4 debug)
+
   handleShow = () => {
     this.setState({ showModal: true })
+  }
+
+  handleUpdate = (newValue) =>{
+    this.setState({absences : newValue});
   }
 
   render() {
@@ -58,8 +54,12 @@ class App extends Component {
                 欠席届を作る
               </Button>
               <Modal show={this.state.showModal} onHide={() => this.handleClose()}>
-                <Form />
+                <Form
+                  absences ={this.state.absences}
+                  handleUpdate ={this.handleUpdate}
+                />
               </Modal>
+              {/*<button onClick={this.show}>Show "absences" after submitting a form by Form.js</button>*/}
             </div>
           </div>
           
