@@ -42,11 +42,11 @@ class App extends Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 px-0">
               <Search />
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-6 px-0">
               <Button className="create-btn" variant="success" onClick={() => this.handleShow()}>
                 欠席届を作る
               </Button>
@@ -60,8 +60,10 @@ class App extends Component {
             </div>
           </div>
           
-          <div className="row">
-            <AbsenceList />
+          <div className="row pt-5">
+            <AbsenceList 
+              absences = {this.state.absences}
+            />
           </div>
         </div>
       </div>

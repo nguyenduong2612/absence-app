@@ -4,9 +4,12 @@ import './AbsenceRequest.css';
 class AbsenceRequest extends Component {
   render() {
     return (
-      <div className="absence-request">
-        
-      </div>
+      <tr>
+        <td>{this.props.name}</td>
+        <td>{this.props.reason}</td>
+        <td>{this.props.start}</td>
+        <td>{this.props.end}</td>
+      </tr>
     );
   }
 }
