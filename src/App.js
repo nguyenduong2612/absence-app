@@ -21,8 +21,8 @@ class App extends Component {
   }
   getSearch =  async(filteredList,search)=>{
     await this.setState({filteredAbsences:filteredList,search:search});
-    console.log(this.state.search);
-    console.log(this.state.filteredAbsences);  // Show filtered list of absences
+    // console.log(this.state.search);
+    // console.log(this.state.filteredAbsences); 
   }
   
   handleClose = () => {
@@ -36,15 +36,20 @@ class App extends Component {
   handleUpdate = (newValue) =>{
     this.setState({absences : newValue});
     this.setState({showModal: false});
-    console.log(this.state.absences)
+    // console.log(this.state.absences)
+  }
+
+  handleDelete = (index) => {
+    this.state.absences.splice(index, 1)
+    this.setState({ absences: this.state.absences })
   }
   
   render() {
     let list;
     if(this.state.search===''){
-        list = <AbsenceList absences = {this.state.absences}/>
+        list = <AbsenceList absences = {this.state.absences} onDelete={this.handleDelete}/>
     }else{
-        list = <AbsenceList absences = {this.state.filteredAbsences}/>
+        list = <AbsenceList absences = {this.state.filteredAbsences} onDelete={this.handleDelete}/>
     }
     return (
       <div className="App">
@@ -57,7 +62,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-6 px-0">
-            <Search getSearch = {this.getSearch} absences={this.state.absences}/>
+              <Search getSearch = {this.getSearch} absences={this.state.absences}/>
             </div>
 
             <div className="col-md-6 px-0">
@@ -70,7 +75,6 @@ class App extends Component {
                   handleUpdate ={this.handleUpdate}
                 />
               </Modal>
-              {/*<button onClick={this.show}>Show "absences" after submitting a form by Form.js</button>*/}
             </div>
           </div>
             
