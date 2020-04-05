@@ -57,6 +57,7 @@ class Form extends Component {
                         className='form-control'
                         placeholder="名前" 
                         onChange={this.handleNameChange}
+                        required
                     />
                 </div>
                 <div className="row px-3">
@@ -64,6 +65,7 @@ class Form extends Component {
                         className='form-control'
                         placeholder="欠席の理由" 
                         onChange={this.handleReasonChange}
+                        required
                     />
                 </div>
                 <div className="row"> 
