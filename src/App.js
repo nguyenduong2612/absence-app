@@ -55,7 +55,7 @@ class App extends Component {
       <div className="App">
         <nav className="navbar navbar-light bg-light">
           <div className="container">
-            <a className="navbar-brand">欠席管理</a>
+            <span className="navbar-brand">欠席管理</span>
           </div>
         </nav>
 
